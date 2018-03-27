@@ -1,0 +1,14 @@
+{
+  "name": "update-translation-keys",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "update-translation-keys": "./index.js"
+  },
+  "dependencies": {
+    "deepmerge": "^2.1.0",
+    "js-yaml": "^3.11.0",
+    "minimist": "^1.2.0"
+  }
+}
