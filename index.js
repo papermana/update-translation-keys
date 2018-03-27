@@ -26,13 +26,24 @@ You can also pass a flag 'yaml=true' if the files are in this format:
     return;
   }
 
+  const [_, ...otherFilesPaths] = filePaths;
   const [baseFile, ...otherFiles] = filePaths
-    .map(path => fs.readFileSync(path, 'utf8'))
-    .map(parseObject);
-  const updatedFiles = otherFiles
-    .map(otherFile => deepMerge(baseFile, otherFile));
+    .map(path => {
+      const [_, locale] = /(\w+)\.\w+$/.exec(path);
+      const file = fs.readFileSync(path, 'utf8');
+      const parsedFile = parseObject(file);
 
-  filePaths.slice(1)
+      return {
+        locale,
+        data: parsedFile[locale],
+      };
+    });
+  const updatedFiles = otherFiles
+    .map(({ locale, data }) => ({
+      [locale]: deepMerge(baseFile.data, object),
+    }));
+
+  otherFilesPaths
     .forEach((path, i) => {
       const fileToWrite = stringifyObject(updatedFiles[i]);
 
