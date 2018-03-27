@@ -40,7 +40,7 @@ You can also pass a flag 'yaml=true' if the files are in this format:
     });
   const updatedFiles = otherFiles
     .map(({ locale, data }) => ({
-      [locale]: deepMerge(baseFile.data, object),
+      [locale]: deepMerge(baseFile.data, data),
     }));
 
   otherFilesPaths
