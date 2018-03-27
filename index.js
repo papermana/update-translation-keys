@@ -20,8 +20,8 @@ update-translation-keys
 Accepts the path to the base translation file (e.g. 'en.json') and any number of other translation files that will get updated. E.g.:
   update-translation-keys translations/en.json translations/de.json translations/es.json
 
-You can also pass a flag 'yaml' if the files are in this format:
-  update-translation-keys --yaml translations/en.yml translations/fr.json
+You can also pass a flag 'yaml=true' if the files are in this format:
+  update-translation-keys --yaml=true translations/en.yml translations/fr.json
     `);
     return;
   }
